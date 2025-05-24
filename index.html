@@ -623,16 +623,45 @@
                 const title = searchData[1][0];
                 const url = searchData[3][0];
                 
-                const extractUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&explaintext=1&titles=${encodeURIComponent(title)}&origin=*`;
+                // Récupérer BEAUCOUP plus de contenu (sections importantes)
+                const extractUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageprops&exsectionformat=wiki&explaintext=1&exlimit=1&titles=${encodeURIComponent(title)}&origin=*`;
                 const extractResponse = await fetch(extractUrl);
                 const extractData = await extractResponse.json();
                 
                 const pageId = Object.keys(extractData.query.pages)[0];
-                const extract = extractData.query.pages[pageId].extract || '';
+                const page = extractData.query.pages[pageId];
+                const extract = page.extract || '';
+                
+                // Récupérer aussi l'infobox et les catégories
+                const infoUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=revisions|categories&rvprop=content&rvsection=0&cllimit=50&titles=${encodeURIComponent(title)}&origin=*`;
+                const infoResponse = await fetch(infoUrl);
+                const infoData = await infoResponse.json();
+                
+                let infoboxContent = '';
+                let categories = [];
+                
+                if (infoData.query.pages[pageId]) {
+                    // Contenu de l'infobox
+                    if (infoData.query.pages[pageId].revisions) {
+                        infoboxContent = infoData.query.pages[pageId].revisions[0].content || '';
+                    }
+                    
+                    // Catégories
+                    if (infoData.query.pages[pageId].categories) {
+                        categories = infoData.query.pages[pageId].categories.map(cat => cat.title);
+                    }
+                }
 
                 const imageUrl = await this.getImage(title);
 
-                return { title, extract, url, imageUrl };
+                return { 
+                    title, 
+                    extract, 
+                    infoboxContent,
+                    categories: categories.join(' '),
+                    url, 
+                    imageUrl 
+                };
             }
 
             async getImage(title) {
@@ -650,32 +679,101 @@
                 }
             }
 
-            analyzeStatus(text) {
-                const lowerText = text.toLowerCase();
+            analyzeStatus(data) {
+                const fullText = (data.extract + ' ' + data.infoboxContent + ' ' + data.categories).toLowerCase();
                 
-                const deathWords = ['mort', 'morte', 'décédé', 'décédée', 'décès', 'died', 'dead', 'death', 'fut', 'était', 'was a', 'was an'];
-                const lifeWords = ['est un', 'est une', 'is a', 'is an', 'continue', 'actuel', 'currently'];
+                console.log('🔍 Analyse de:', data.title);
+                console.log('📝 Texte analysé (début):', fullText.substring(0, 300));
                 
-                if (lowerText.match(/\(\d{4}\s*[-–]\s*\d{4}\)/)) {
+                // === PRIORITÉ ABSOLUE : PATTERNS DE DATES ===
+                
+                // 1. Format (YYYY-YYYY) = MORT CERTAIN
+                const deathRange = fullText.match(/\(\s*\d{4}\s*[-–]\s*\d{4}\s*\)/);
+                if (deathRange) {
+                    console.log('💀 MORT CERTAIN - Pattern date:', deathRange[0]);
                     return 'dead';
                 }
                 
-                if (lowerText.match(/\(\d{4}\s*[-–]\s*\)/)) {
+                // 2. Format (YYYY-) = VIVANT CERTAIN  
+                const lifeRange = fullText.match(/\(\s*\d{4}\s*[-–]\s*\)/);
+                if (lifeRange) {
+                    console.log('✅ VIVANT CERTAIN - Pattern date:', lifeRange[0]);
                     return 'alive';
                 }
+                
+                // === ANALYSE PAR MOTS-CLÉS SIMPLES ===
                 
                 let deathScore = 0;
                 let lifeScore = 0;
                 
+                // Mots de DÉCÈS (plus restrictifs)
+                const deathWords = [
+                    'est mort', 'est morte', 'died in', 'died on', 'death in',
+                    'décédé en', 'décédée en', 'mort en', 'morte en',
+                    'fut tué', 'fut tuée', 'was killed', 'was murdered',
+                    'suicide', 'assassiné', 'assassinée'
+                ];
+                
                 deathWords.forEach(word => {
-                    if (lowerText.includes(word)) deathScore++;
+                    if (fullText.includes(word)) {
+                        deathScore += 3;
+                        console.log('💀 Mot décès trouvé:', word);
+                    }
                 });
+                
+                // Mots de VIE (plus restrictifs)
+                const lifeWords = [
+                    'est un', 'est une', 'is a', 'is an',
+                    'actuellement', 'currently', 'today',
+                    'continue', 'continues', 'works'
+                ];
                 
                 lifeWords.forEach(word => {
-                    if (lowerText.includes(word)) lifeScore++;
+                    if (fullText.includes(word)) {
+                        lifeScore += 2;
+                        console.log('✅ Mot vie trouvé:', word);
+                    }
                 });
                 
-                return deathScore > lifeScore ? 'dead' : 'alive';
+                // === ANALYSE DES VERBES (INDICATEUR FAIBLE) ===
+                
+                // Compter "fut/était/was" (passé) vs "est/is" (présent)
+                const pastVerbs = (fullText.match(/\b(fut|était|was)\s+(un|une|a|an|the)\b/g) || []).length;
+                const presentVerbs = (fullText.match(/\b(est|is)\s+(un|une|a|an|the)\b/g) || []).length;
+                
+                console.log('📊 Verbes - Passé:', pastVerbs, 'Présent:', presentVerbs);
+                
+                if (pastVerbs > presentVerbs + 2) {
+                    deathScore += 1;
+                    console.log('💀 Majorité de verbes au passé');
+                } else if (presentVerbs > pastVerbs) {
+                    lifeScore += 1;
+                    console.log('✅ Majorité de verbes au présent');
+                }
+                
+                // === DÉCISION FINALE ===
+                
+                console.log('📊 Scores finaux - Décès:', deathScore, 'Vie:', lifeScore);
+                
+                if (deathScore > lifeScore) {
+                    console.log('💀 RÉSULTAT: DÉCÉDÉ');
+                    return 'dead';
+                } else if (lifeScore > deathScore) {
+                    console.log('✅ RÉSULTAT: VIVANT');
+                    return 'alive';
+                } else {
+                    // En cas d'égalité, analyser le début du texte plus finement
+                    const firstSentence = fullText.substring(0, 150);
+                    console.log('⚖️ Égalité - Analyse première phrase:', firstSentence);
+                    
+                    if (firstSentence.includes('fut ') || firstSentence.includes('était ') || firstSentence.includes('was ')) {
+                        console.log('💀 RÉSULTAT: DÉCÉDÉ (verbe passé en début)');
+                        return 'dead';
+                    } else {
+                        console.log('✅ RÉSULTAT: VIVANT (par défaut)');
+                        return 'alive';
+                    }
+                }
             }
 
             extractBirthInfo(text) {
@@ -825,7 +923,7 @@
             }
 
             displayResult(data) {
-                const status = this.analyzeStatus(data.extract);
+                const status = this.analyzeStatus(data);
                 
                 this.result.className = `result ${status}`;
                 this.result.style.display = 'block';
@@ -849,7 +947,7 @@
                         this.resultTitle.textContent = 'Vivant(e)';
                         this.resultDetails.textContent = `${data.title} semble être encore en vie.`;
                         
-                        const birthInfo = this.extractBirthInfo(data.extract);
+                        const birthInfo = this.extractBirthInfo(data.extract + ' ' + data.infoboxContent);
                         if (birthInfo && birthInfo.age > 0 && birthInfo.age < 150) {
                             let birthDisplay = '';
                             if (birthInfo.hasFullDate) {
@@ -868,8 +966,9 @@
                         this.resultTitle.textContent = 'Décédé(e)';
                         this.resultDetails.textContent = `${data.title} semble être décédé(e).`;
                         
-                        const birthInfoDead = this.extractBirthInfo(data.extract);
-                        const deathInfo = this.extractDeathInfo(data.extract);
+                        const fullText = data.extract + ' ' + data.infoboxContent;
+                        const birthInfoDead = this.extractBirthInfo(fullText);
+                        const deathInfo = this.extractDeathInfo(fullText);
                         
                         let dateDisplay = '';
                         
