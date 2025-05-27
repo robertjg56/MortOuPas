@@ -2,1029 +2,660 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche Biographique</title>
-    <meta name="description" content="Découvrez si une personnalité est vivante ou décédée avec dates de naissance et photos">
-    <meta name="theme-color" content="#003d7a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Recherche Bio">
-    
-    <!-- Icons pour PWA -->
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iNDAiIGZpbGw9IiMwMDNkN2EiLz4KPGC2lyY2xlIGN4PSI5MCIgY3k9IjcwIiByPSIyNSIgZmlsbD0id2hpdGUiLz4KPHA+dGggZD0iTTkwIDEwNUMxMDIuMTUgMTA1IDExNSAxMTIuODUgMTE1IDEyNUgxMTVDMTE1IDEzNyAxMTUgMTQ1IDY1IDEyNSIgZmlsbD0id2hpdGUiLz4KPHN2Zz4=">
-    <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzAwM2Q3YSIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjEyIiByPSI0IiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYgMThDMjAgMTggMjQgMjAgMjQgMjJIMjRDMjQgMjQgMjQgMjYgOCAyMiIgZmlsbD0id2hpdGUiLz4KPHN2Zz4=">
-    
-    <!-- Manifest PWA -->
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIlJlY2hlcmNoZSBCaW9ncmFwaGlxdWUiLAogICJzaG9ydF9uYW1lIjogIlJlY2hlcmNoZSBCaW8iLAogICJkZXNjcmlwdGlvbiI6ICJEw6ljb3V2cmV6IHNpIHVuZSBwZXJzb25uYWxpdMOpIGVzdCB2aXZhbnRlIG91IGTDqWPDqWTDqWUiLAogICJzdGFydF91cmwiOiAiLiIsCiAgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCiAgImJhY2tncm91bmRfY29sb3IiOiAiIzAwM2Q3YSIsCiAgInRoZW1lX2NvbG9yIjogIiMwMDNkN2EiLAogICJpY29ucyI6IFsKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVGd3SWlCb1pXbG5hSFE5SWpFNE1DSWlJSFpwWlhkQ2IzZzlJakFnTUNBeE9EQWdNVGd3SWlCbWFXeHNQU0p1YjI1bElpQjRiV3h1Y3owcWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaVBnbzhjbVZqZENCM2FXUjBhRDBpTVRnd0lpQm9aV2xuYUhROUlqRTRNQ0lpSUhKNFBTSXpOQ0lpSUdacGJHdzlJaU13TURObE4yRWlMejRLUEdOcGNtTnNaU0JqZUQwaU9UQWLJR041UFNJMk1TSWlJSEk5U1RJMUlpQm1hV3hzUFNKM2FHbDBaU0l2UGdvOGNHRjBhU0JrUFNKTk9UQWdNVEExUXpFdU9qSXdOREJUTVNBd1JIVTVNVGR2SWlCbWFXeHNQU0ozYUdsMFpTSXZQZ284TDNOMlp6ND0iLAogICAgICAic2l6ZXMiOiAiMTgweDE4MCIsCiAgICAgICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCiAgICB9CiAgXQp9">
-    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        html {
-            height: 100%;
-            -webkit-text-size-adjust: 100%;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(135deg, #003d7a 0%, #0056b3 50%, #007bff 100%);
             min-height: 100vh;
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
             padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .header h1 {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .header .subtitle {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .search-container {
-            background: rgba(255, 255, 255, 0.98);
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 20px;
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 61, 122, 0.2);
         }
 
-        .input-group {
-            position: relative;
-            margin-bottom: 15px;
+        h1 {
+            color: #003d7a;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
         }
 
-        .input-container {
+        .search-box {
+            margin-bottom: 30px;
             position: relative;
         }
 
-        input[type="text"] {
+        input {
             width: 100%;
-            padding: 16px;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
+            padding: 15px;
             font-size: 16px;
-            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
             outline: none;
-            transition: all 0.3s ease;
-            -webkit-appearance: none;
         }
 
-        input[type="text"]:focus {
+        input:focus {
             border-color: #007bff;
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
         }
 
-        .suggestions {
+        /* Styles pour l'autocomplétion */
+        .autocomplete-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .autocomplete-items {
             position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
             top: 100%;
             left: 0;
             right: 0;
             background: white;
-            border: 2px solid #007bff;
-            border-top: none;
-            border-radius: 0 0 12px 12px;
+            border-radius: 0 0 8px 8px;
             max-height: 200px;
             overflow-y: auto;
-            z-index: 1000;
-            display: none;
-            box-shadow: 0 8px 25px rgba(0, 61, 122, 0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        .suggestion-item {
-            padding: 15px;
+        .autocomplete-items div {
+            padding: 12px;
             cursor: pointer;
-            border-bottom: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
-            font-size: 16px;
-            text-align: left;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+            font-size: 14px;
         }
 
-        .suggestion-item:last-child {
-            border-bottom: none;
+        .autocomplete-items div:hover {
+            background-color: #e9e9e9;
         }
 
-        .suggestion-item:hover,
-        .suggestion-item.selected {
-            background: #007bff;
-            color: white;
+        .autocomplete-active {
+            background-color: #007bff !important;
+            color: #ffffff;
         }
 
         button {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             background: linear-gradient(135deg, #003d7a, #007bff);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            -webkit-appearance: none;
         }
 
-        button:active {
-            transform: scale(0.98);
-        }
-
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        button:hover {
+            opacity: 0.9;
         }
 
         .loading {
             display: none;
             text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 16px;
-            margin-bottom: 20px;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e9ecef;
-            border-top: 4px solid #007bff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            padding: 20px;
+            color: #666;
         }
 
         .result {
             display: none;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 16px;
-            padding: 25px;
-            animation: fadeIn 0.5s ease;
-            box-shadow: 0 10px 30px rgba(0, 61, 122, 0.15);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .result-content {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .result-image-container {
-            flex-shrink: 0;
-            width: 100px;
-            height: 100px;
+            margin-top: 30px;
+            padding: 20px;
             border-radius: 12px;
-            overflow: hidden;
-            background: #f8f9fa;
+            color: white;
+        }
+
+        .result.alive {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .result.dead {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+
+        .result-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border: 2px solid #e9ecef;
+            gap: 20px;
+            margin-bottom: 15px;
         }
 
         .result-image {
-            width: 100%;
-            height: 100%;
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
             object-fit: cover;
+            background: rgba(255,255,255,0.2);
         }
 
-        .no-image {
-            color: #6c757d;
-            font-size: 2rem;
+        .result-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
-        .result-info {
-            flex: 1;
-            min-width: 0;
+        .result-status {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
-        .result.alive .result-content {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: -10px -10px 15px -10px;
+        .badges {
+            margin-top: 15px;
         }
 
-        .result.dead .result-content {
-            background: linear-gradient(135deg, #6c757d, #495057);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: -10px -10px 15px -10px;
-        }
-
-        .result.error .result-content {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin: -10px -10px 15px -10px;
-        }
-
-        .result-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .result-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .result-details {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .age-badge {
+        .badge {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.25);
-            padding: 10px 18px;
-            border-radius: 25px;
-            margin: 8px 4px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px 5px 5px 0;
+            font-size: 0.9rem;
         }
 
-        .wikipedia-link {
+        .wiki-link {
             display: inline-block;
             margin-top: 15px;
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .wikipedia-link:active {
-            transform: scale(0.95);
-        }
-
-        .install-prompt {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 15px;
-            margin: 20px;
-            border-radius: 12px;
-            text-align: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: none;
-        }
-
-        .install-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 10px 20px;
             border-radius: 8px;
-            margin-top: 10px;
-            font-size: 14px;
         }
 
-        /* Responsive pour mobile */
         @media (max-width: 480px) {
-            .main-content {
-                padding: 15px;
-            }
-
-            .search-container {
+            .container {
                 padding: 20px;
             }
-
-            .result-content {
+            
+            .result-header {
                 flex-direction: column;
                 text-align: center;
-            }
-
-            .result-image-container {
-                width: 80px;
-                height: 80px;
-                margin: 0 auto 15px;
-            }
-
-            .age-badge {
-                display: block;
-                margin: 8px 0;
-            }
-        }
-
-        /* Support mode sombre iOS */
-        @media (prefers-color-scheme: dark) {
-            .search-container, .result, .loading {
-                background: rgba(28, 28, 30, 0.95);
-                color: #ffffff;
-            }
-            
-            input[type="text"] {
-                background: #1c1c1e;
-                color: #ffffff;
-                border-color: #38383a;
-            }
-            
-            .suggestion-item {
-                background: #1c1c1e;
-                color: #ffffff;
-                border-color: #38383a;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <div class="container">
         <h1>🔍 Recherche Biographique</h1>
-        <p class="subtitle">Découvrez le statut vital des personnalités</p>
-    </div>
-
-    <div class="install-prompt" id="installPrompt">
-        <p>📱 Installez cette app sur votre iPhone !</p>
-        <p style="font-size: 0.9rem; opacity: 0.8; margin: 8px 0;">Appuyez sur <strong>Partager</strong> puis <strong>Sur l'écran d'accueil</strong></p>
-        <button class="install-button" onclick="hideInstallPrompt()">Compris</button>
-    </div>
-
-    <div class="main-content">
-        <div class="search-container">
-            <form id="searchForm">
-                <div class="input-group">
-                    <div class="input-container">
-                        <input 
-                            type="text" 
-                            id="personName" 
-                            placeholder="Nom de la personnalité..."
-                            autocomplete="off"
-                            required
-                        >
-                        <div class="suggestions" id="suggestions"></div>
-                    </div>
-                </div>
-                <button type="submit" id="searchBtn">Rechercher</button>
-            </form>
+        
+        <div class="search-box">
+            <div class="autocomplete-container">
+                <input type="text" id="personName" placeholder="Entrez le nom d'une personnalité..." autocomplete="off" />
+            </div>
+            <button onclick="search()">Rechercher</button>
         </div>
 
         <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Recherche en cours...</p>
+            Recherche en cours...
         </div>
 
         <div class="result" id="result">
-            <div class="result-content">
-                <div class="result-image-container" id="imageContainer">
-                    <div class="no-image" id="noImage">👤</div>
-                    <img class="result-image" id="resultImage" style="display: none;">
-                </div>
+            <div class="result-header">
+                <img id="personImage" class="result-image" style="display: none;" />
+                <div id="noImage" class="result-image" style="display: flex; align-items: center; justify-content: center; font-size: 2rem;">👤</div>
                 <div class="result-info">
-                    <div class="result-icon" id="resultIcon"></div>
-                    <div class="result-title" id="resultTitle"></div>
-                    <div class="result-details" id="resultDetails"></div>
-                    <div id="ageInfo"></div>
-                    <a class="wikipedia-link" id="wikipediaLink" target="_blank" style="display: none;">
-                        📖 Voir Wikipedia
-                    </a>
+                    <h2 id="personTitle"></h2>
+                    <div class="result-status" id="statusText"></div>
                 </div>
             </div>
+            <div class="badges" id="badges"></div>
+            <a id="wikiLink" class="wiki-link" target="_blank">📖 Voir Wikipedia</a>
         </div>
     </div>
 
     <script>
-        // PWA Installation
-        let deferredPrompt;
-        
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            document.getElementById('installPrompt').style.display = 'block';
-        });
+        let autocompleteTimer;
+        let currentFocus = -1;
 
-        function hideInstallPrompt() {
-            document.getElementById('installPrompt').style.display = 'none';
-        }
+        // Configuration de l'autocomplétion
+        function setupAutocomplete() {
+            const input = document.getElementById('personName');
+            
+            input.addEventListener('input', function() {
+                const val = this.value;
+                closeAllLists();
+                
+                if (!val || val.length < 2) return;
+                
+                clearTimeout(autocompleteTimer);
+                autocompleteTimer = setTimeout(() => {
+                    fetchSuggestions(val);
+                }, 300);
+            });
 
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('data:text/javascript;base64,c2VsZi5hZGRFdmVudExpc3RlbmVyKCdpbnN0YWxsJywgZXZlbnQgPT4ge30pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2FjdGl2YXRlJywgZXZlbnQgPT4ge30pOwpzZWxmLmFkZEV2ZW50TGlzdGVuZXIoJ2ZldGNoJywgZXZlbnQgPT4ge30pOw==')
-                .catch(err => console.log('SW registration failed'));
+            input.addEventListener('keydown', function(e) {
+                let x = document.getElementById('autocomplete-list');
+                if (x) x = x.getElementsByTagName('div');
+                
+                if (e.keyCode === 40) { // Flèche bas
+                    currentFocus++;
+                    addActive(x);
+                    e.preventDefault();
+                } else if (e.keyCode === 38) { // Flèche haut
+                    currentFocus--;
+                    addActive(x);
+                    e.preventDefault();
+                } else if (e.keyCode === 13) { // Entrée
+                    e.preventDefault();
+                    if (currentFocus > -1 && x) {
+                        x[currentFocus].click();
+                    } else {
+                        search();
+                    }
+                } else if (e.keyCode === 27) { // Échap
+                    closeAllLists();
+                }
             });
         }
 
-        class LifeChecker {
-            constructor() {
-                this.form = document.getElementById('searchForm');
-                this.nameInput = document.getElementById('personName');
-                this.searchBtn = document.getElementById('searchBtn');
-                this.loading = document.getElementById('loading');
-                this.result = document.getElementById('result');
-                this.resultIcon = document.getElementById('resultIcon');
-                this.resultTitle = document.getElementById('resultTitle');
-                this.resultDetails = document.getElementById('resultDetails');
-                this.ageInfo = document.getElementById('ageInfo');
-                this.wikipediaLink = document.getElementById('wikipediaLink');
-                this.suggestions = document.getElementById('suggestions');
-                this.resultImage = document.getElementById('resultImage');
-                this.noImage = document.getElementById('noImage');
+        async function fetchSuggestions(query) {
+            try {
+                const searchUrl = `https://fr.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=8&namespace=0&format=json&origin=*`;
+                const response = await fetch(searchUrl);
+                const data = await response.json();
                 
-                this.suggestionsData = [];
-                this.selectedIndex = -1;
-                this.searchTimeout = null;
-                
-                this.init();
-            }
-
-            init() {
-                this.form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.search();
-                });
-
-                this.nameInput.addEventListener('input', (e) => {
-                    this.handleInput(e.target.value);
-                });
-
-                this.nameInput.addEventListener('keydown', (e) => {
-                    this.handleKeydown(e);
-                });
-
-                document.addEventListener('click', (e) => {
-                    if (!e.target.closest('.input-container')) {
-                        this.hideSuggestions();
-                    }
-                });
-
-                // Prévenir le zoom sur iOS
-                this.nameInput.addEventListener('touchstart', (e) => {
-                    this.nameInput.style.fontSize = '16px';
-                });
-            }
-
-            handleInput(value) {
-                clearTimeout(this.searchTimeout);
-                
-                if (value.length < 2) {
-                    this.hideSuggestions();
-                    return;
+                if (data[1] && data[1].length > 0) {
+                    displaySuggestions(data[1]);
                 }
-
-                this.searchTimeout = setTimeout(() => {
-                    this.getSuggestions(value);
-                }, 300);
+            } catch (error) {
+                console.log('Erreur autocomplétion:', error);
             }
+        }
 
-            async getSuggestions(query) {
-                try {
-                    const url = `https://fr.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=5&namespace=0&format=json&origin=*`;
-                    const response = await fetch(url);
-                    const data = await response.json();
-                    
-                    this.suggestionsData = data[1] || [];
-                    this.displaySuggestions();
-                } catch (error) {
-                    this.hideSuggestions();
+        function displaySuggestions(suggestions) {
+            const input = document.getElementById('personName');
+            const container = input.parentNode;
+            
+            closeAllLists();
+            currentFocus = -1;
+            
+            const listDiv = document.createElement('div');
+            listDiv.setAttribute('id', 'autocomplete-list');
+            listDiv.setAttribute('class', 'autocomplete-items');
+            
+            suggestions.forEach(suggestion => {
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = suggestion;
+                itemDiv.addEventListener('click', function() {
+                    input.value = suggestion;
+                    closeAllLists();
+                    search();
+                });
+                listDiv.appendChild(itemDiv);
+            });
+            
+            container.appendChild(listDiv);
+        }
+
+        function addActive(x) {
+            if (!x) return false;
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            x[currentFocus].classList.add('autocomplete-active');
+        }
+
+        function removeActive(x) {
+            for (let i = 0; i < x.length; i++) {
+                x[i].classList.remove('autocomplete-active');
+            }
+        }
+
+        function closeAllLists(elmnt) {
+            const x = document.getElementsByClassName('autocomplete-items');
+            for (let i = 0; i < x.length; i++) {
+                if (elmnt !== x[i] && elmnt !== document.getElementById('personName')) {
+                    x[i].parentNode.removeChild(x[i]);
                 }
             }
+        }
 
-            displaySuggestions() {
-                if (this.suggestionsData.length === 0) {
-                    this.hideSuggestions();
-                    return;
-                }
+        // Fermer les suggestions si on clique ailleurs
+        document.addEventListener('click', function(e) {
+            closeAllLists(e.target);
+        });
 
-                this.suggestions.innerHTML = '';
-                this.selectedIndex = -1;
+        async function search() {
+            const name = document.getElementById('personName').value.trim();
+            if (!name) return;
 
-                this.suggestionsData.forEach((suggestion, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'suggestion-item';
-                    item.textContent = suggestion;
-                    item.addEventListener('click', () => {
-                        this.selectSuggestion(suggestion);
-                    });
-                    this.suggestions.appendChild(item);
-                });
+            console.log('🔍 Recherche de:', name);
+            showLoading();
+            closeAllLists();
 
-                this.suggestions.style.display = 'block';
-            }
-
-            handleKeydown(e) {
-                if (this.suggestions.style.display === 'none') return;
-
-                switch (e.key) {
-                    case 'ArrowDown':
-                        e.preventDefault();
-                        this.selectedIndex = Math.min(this.selectedIndex + 1, this.suggestionsData.length - 1);
-                        this.updateSelection();
-                        break;
-                    case 'ArrowUp':
-                        e.preventDefault();
-                        this.selectedIndex = Math.max(this.selectedIndex - 1, -1);
-                        this.updateSelection();
-                        break;
-                    case 'Enter':
-                        e.preventDefault();
-                        if (this.selectedIndex >= 0) {
-                            this.selectSuggestion(this.suggestionsData[this.selectedIndex]);
-                        } else {
-                            this.search();
-                        }
-                        break;
-                    case 'Escape':
-                        this.hideSuggestions();
-                        break;
-                }
-            }
-
-            updateSelection() {
-                const items = this.suggestions.querySelectorAll('.suggestion-item');
-                items.forEach((item, index) => {
-                    item.classList.toggle('selected', index === this.selectedIndex);
-                });
-            }
-
-            selectSuggestion(suggestion) {
-                this.nameInput.value = suggestion;
-                this.hideSuggestions();
-                this.search();
-            }
-
-            hideSuggestions() {
-                this.suggestions.style.display = 'none';
-                this.selectedIndex = -1;
-            }
-
-            async search() {
-                const name = this.nameInput.value.trim();
-                if (!name) return;
-
-                this.showLoading();
-                
-                try {
-                    const data = await this.searchWikipedia(name);
-                    this.displayResult(data);
-                } catch (error) {
-                    this.displayError(error.message);
-                } finally {
-                    this.hideLoading();
-                }
-            }
-
-            async searchWikipedia(name) {
+            try {
+                // Étape 1: Recherche
                 const searchUrl = `https://fr.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(name)}&limit=1&namespace=0&format=json&origin=*`;
                 const searchResponse = await fetch(searchUrl);
                 const searchData = await searchResponse.json();
-                
+
                 if (!searchData[1] || searchData[1].length === 0) {
                     throw new Error('Aucun article trouvé');
                 }
 
                 const title = searchData[1][0];
                 const url = searchData[3][0];
-                
-                // Récupérer BEAUCOUP plus de contenu (sections importantes)
-                const extractUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|pageprops&exsectionformat=wiki&explaintext=1&exlimit=1&titles=${encodeURIComponent(title)}&origin=*`;
+
+                console.log('📖 Article trouvé:', title);
+
+                // Étape 2: Contenu
+                const extractUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&explaintext=1&titles=${encodeURIComponent(title)}&origin=*`;
                 const extractResponse = await fetch(extractUrl);
                 const extractData = await extractResponse.json();
-                
+
                 const pageId = Object.keys(extractData.query.pages)[0];
-                const page = extractData.query.pages[pageId];
-                const extract = page.extract || '';
-                
-                // Récupérer aussi l'infobox et les catégories
-                const infoUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=revisions|categories&rvprop=content&rvsection=0&cllimit=50&titles=${encodeURIComponent(title)}&origin=*`;
-                const infoResponse = await fetch(infoUrl);
-                const infoData = await infoResponse.json();
-                
-                let infoboxContent = '';
-                let categories = [];
-                
-                if (infoData.query.pages[pageId]) {
-                    // Contenu de l'infobox
-                    if (infoData.query.pages[pageId].revisions) {
-                        infoboxContent = infoData.query.pages[pageId].revisions[0].content || '';
-                    }
-                    
-                    // Catégories
-                    if (infoData.query.pages[pageId].categories) {
-                        categories = infoData.query.pages[pageId].categories.map(cat => cat.title);
-                    }
-                }
+                const extract = extractData.query.pages[pageId].extract || '';
 
-                const imageUrl = await this.getImage(title);
+                // Étape 3: Image
+                const imageUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&pithumbsize=300&titles=${encodeURIComponent(title)}&origin=*`;
+                const imageResponse = await fetch(imageUrl);
+                const imageData = await imageResponse.json();
 
-                return { 
-                    title, 
-                    extract, 
-                    infoboxContent,
-                    categories: categories.join(' '),
-                    url, 
-                    imageUrl 
-                };
-            }
+                const imageSrc = imageData.query.pages[pageId].thumbnail?.source || null;
 
-            async getImage(title) {
-                try {
-                    const imageUrl = `https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&pithumbsize=300&titles=${encodeURIComponent(title)}&origin=*`;
-                    const response = await fetch(imageUrl);
-                    const data = await response.json();
-                    
-                    const pageId = Object.keys(data.query.pages)[0];
-                    const page = data.query.pages[pageId];
-                    
-                    return page.thumbnail ? page.thumbnail.source : null;
-                } catch (error) {
-                    return null;
-                }
-            }
+                console.log('📝 Contenu récupéré, analyse...');
 
-            analyzeStatus(data) {
-                const fullText = (data.extract + ' ' + data.infoboxContent + ' ' + data.categories).toLowerCase();
-                
-                console.log('🔍 Analyse de:', data.title);
-                console.log('📝 Texte analysé (début):', fullText.substring(0, 300));
-                
-                // === PRIORITÉ ABSOLUE : PATTERNS DE DATES ===
-                
-                // 1. Format (YYYY-YYYY) = MORT CERTAIN
-                const deathRange = fullText.match(/\(\s*\d{4}\s*[-–]\s*\d{4}\s*\)/);
-                if (deathRange) {
-                    console.log('💀 MORT CERTAIN - Pattern date:', deathRange[0]);
-                    return 'dead';
-                }
-                
-                // 2. Format (YYYY-) = VIVANT CERTAIN  
-                const lifeRange = fullText.match(/\(\s*\d{4}\s*[-–]\s*\)/);
-                if (lifeRange) {
-                    console.log('✅ VIVANT CERTAIN - Pattern date:', lifeRange[0]);
-                    return 'alive';
-                }
-                
-                // === ANALYSE PAR MOTS-CLÉS SIMPLES ===
-                
-                let deathScore = 0;
-                let lifeScore = 0;
-                
-                // Mots de DÉCÈS (plus restrictifs)
-                const deathWords = [
-                    'est mort', 'est morte', 'died in', 'died on', 'death in',
-                    'décédé en', 'décédée en', 'mort en', 'morte en',
-                    'fut tué', 'fut tuée', 'was killed', 'was murdered',
-                    'suicide', 'assassiné', 'assassinée'
-                ];
-                
-                deathWords.forEach(word => {
-                    if (fullText.includes(word)) {
-                        deathScore += 3;
-                        console.log('💀 Mot décès trouvé:', word);
-                    }
+                // Analyse simple
+                const status = analyzeStatus(extract);
+                const birthInfo = extractBirthInfo(extract);
+                const deathInfo = status === 'dead' ? extractDeathInfo(extract) : null;
+
+                console.log('✅ Analyse terminée:', status);
+
+                // Affichage
+                displayResult({
+                    title,
+                    url,
+                    status,
+                    imageSrc,
+                    birthInfo,
+                    deathInfo
                 });
-                
-                // Mots de VIE (plus restrictifs)
-                const lifeWords = [
-                    'est un', 'est une', 'is a', 'is an',
-                    'actuellement', 'currently', 'today',
-                    'continue', 'continues', 'works'
-                ];
-                
-                lifeWords.forEach(word => {
-                    if (fullText.includes(word)) {
-                        lifeScore += 2;
-                        console.log('✅ Mot vie trouvé:', word);
-                    }
-                });
-                
-                // === ANALYSE DES VERBES (INDICATEUR FAIBLE) ===
-                
-                // Compter "fut/était/was" (passé) vs "est/is" (présent)
-                const pastVerbs = (fullText.match(/\b(fut|était|was)\s+(un|une|a|an|the)\b/g) || []).length;
-                const presentVerbs = (fullText.match(/\b(est|is)\s+(un|une|a|an|the)\b/g) || []).length;
-                
-                console.log('📊 Verbes - Passé:', pastVerbs, 'Présent:', presentVerbs);
-                
-                if (pastVerbs > presentVerbs + 2) {
-                    deathScore += 1;
-                    console.log('💀 Majorité de verbes au passé');
-                } else if (presentVerbs > pastVerbs) {
-                    lifeScore += 1;
-                    console.log('✅ Majorité de verbes au présent');
-                }
-                
-                // === DÉCISION FINALE ===
-                
-                console.log('📊 Scores finaux - Décès:', deathScore, 'Vie:', lifeScore);
-                
-                if (deathScore > lifeScore) {
-                    console.log('💀 RÉSULTAT: DÉCÉDÉ');
-                    return 'dead';
-                } else if (lifeScore > deathScore) {
-                    console.log('✅ RÉSULTAT: VIVANT');
-                    return 'alive';
-                } else {
-                    // En cas d'égalité, analyser le début du texte plus finement
-                    const firstSentence = fullText.substring(0, 150);
-                    console.log('⚖️ Égalité - Analyse première phrase:', firstSentence);
-                    
-                    if (firstSentence.includes('fut ') || firstSentence.includes('était ') || firstSentence.includes('was ')) {
-                        console.log('💀 RÉSULTAT: DÉCÉDÉ (verbe passé en début)');
-                        return 'dead';
-                    } else {
-                        console.log('✅ RÉSULTAT: VIVANT (par défaut)');
-                        return 'alive';
-                    }
-                }
-            }
 
-            extractBirthInfo(text) {
-                const lowerText = text.toLowerCase();
-                const originalText = text;
-                
-                const fullDatePatterns = [
-                    {
-                        pattern: /né(?:e)?\s+le\s+(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/i,
-                        format: 'day-month-year'
-                    },
-                    {
-                        pattern: /born\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})/i,
-                        format: 'month-day-year'
-                    }
-                ];
-                
-                const months = {
-                    'janvier': 1, 'février': 2, 'mars': 3, 'avril': 4, 'mai': 5, 'juin': 6,
-                    'juillet': 7, 'août': 8, 'septembre': 9, 'octobre': 10, 'novembre': 11, 'décembre': 12,
-                    'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6,
-                    'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12
-                };
-                
-                for (const {pattern, format} of fullDatePatterns) {
-                    const match = originalText.match(pattern);
-                    if (match) {
-                        let day, month, year;
-                        
-                        if (format === 'day-month-year') {
-                            day = parseInt(match[1]);
-                            month = months[match[2].toLowerCase()];
-                            year = parseInt(match[3]);
-                        } else if (format === 'month-day-year') {
-                            month = months[match[1].toLowerCase()];
-                            day = parseInt(match[2]);
-                            year = parseInt(match[3]);
-                        }
-                        
-                        if (year >= 1900 && year <= new Date().getFullYear() && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
-                            const birthDate = new Date(year, month - 1, day);
-                            const age = this.calculateAge(birthDate);
-                            
-                            return {
-                                fullDate: `${day}/${month}/${year}`,
-                                age: age,
-                                hasFullDate: true
-                            };
-                        }
-                    }
-                }
-                
-                const yearPatterns = [
-                    /\((\d{4})\s*[-–]\s*\)/,
-                    /né(?:e)?\s+en\s+(\d{4})/,
-                    /born\s+.*?(\d{4})/
-                ];
-                
-                for (const pattern of yearPatterns) {
-                    const match = lowerText.match(pattern);
-                    if (match) {
-                        const year = parseInt(match[1]);
-                        if (year >= 1900 && year <= new Date().getFullYear()) {
-                            const age = new Date().getFullYear() - year;
-                            return {
-                                fullDate: year.toString(),
-                                age: age,
-                                hasFullDate: false
-                            };
-                        }
-                    }
-                }
-                
-                return null;
-            }
-
-            calculateAge(birthDate) {
-                const today = new Date();
-                let age = today.getFullYear() - birthDate.getFullYear();
-                const monthDiff = today.getMonth() - birthDate.getMonth();
-                
-                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-                    age--;
-                }
-                
-                return age;
-            }
-
-            extractDeathInfo(text) {
-                const lowerText = text.toLowerCase();
-                const originalText = text;
-                
-                const deathDatePatterns = [
-                    {
-                        pattern: /mort\s+le\s+(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/i,
-                        format: 'day-month-year'
-                    },
-                    {
-                        pattern: /died\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})/i,
-                        format: 'month-day-year'
-                    }
-                ];
-                
-                const months = {
-                    'janvier': 1, 'février': 2, 'mars': 3, 'avril': 4, 'mai': 5, 'juin': 6,
-                    'juillet': 7, 'août': 8, 'septembre': 9, 'octobre': 10, 'novembre': 11, 'décembre': 12,
-                    'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6,
-                    'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12
-                };
-                
-                for (const {pattern, format} of deathDatePatterns) {
-                    const match = originalText.match(pattern);
-                    if (match) {
-                        let day, month, year;
-                        
-                        if (format === 'day-month-year') {
-                            day = parseInt(match[1]);
-                            month = months[match[2].toLowerCase()];
-                            year = parseInt(match[3]);
-                        } else if (format === 'month-day-year') {
-                            month = months[match[1].toLowerCase()];
-                            day = parseInt(match[2]);
-                            year = parseInt(match[3]);
-                        }
-                        
-                        if (year >= 1900 && year <= new Date().getFullYear() && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
-                            return {
-                                fullDate: `${day}/${month}/${year}`,
-                                hasFullDate: true
-                            };
-                        }
-                    }
-                }
-                
-                const parenthesesMatch = lowerText.match(/\((\d{4})\s*[-–]\s*(\d{4})\)/);
-                if (parenthesesMatch) {
-                    const deathYear = parseInt(parenthesesMatch[2]);
-                    if (deathYear >= 1900 && deathYear <= new Date().getFullYear()) {
-                        return {
-                            fullDate: deathYear.toString(),
-                            hasFullDate: false
-                        };
-                    }
-                }
-                
-                return null;
-            }
-
-            displayResult(data) {
-                const status = this.analyzeStatus(data);
-                
-                this.result.className = `result ${status}`;
-                this.result.style.display = 'block';
-                
-                if (data.imageUrl) {
-                    this.resultImage.src = data.imageUrl;
-                    this.resultImage.style.display = 'block';
-                    this.noImage.style.display = 'none';
-                    this.resultImage.onerror = () => {
-                        this.resultImage.style.display = 'none';
-                        this.noImage.style.display = 'flex';
-                    };
-                } else {
-                    this.resultImage.style.display = 'none';
-                    this.noImage.style.display = 'flex';
-                }
-                
-                switch (status) {
-                    case 'alive':
-                        this.resultIcon.textContent = '✅';
-                        this.resultTitle.textContent = 'Vivant(e)';
-                        this.resultDetails.textContent = `${data.title} semble être encore en vie.`;
-                        
-                        const birthInfo = this.extractBirthInfo(data.extract + ' ' + data.infoboxContent);
-                        if (birthInfo && birthInfo.age > 0 && birthInfo.age < 150) {
-                            let birthDisplay = '';
-                            if (birthInfo.hasFullDate) {
-                                birthDisplay = `<div class="age-badge">🎂 ${birthInfo.fullDate} (${birthInfo.age} ans)</div>`;
-                            } else {
-                                birthDisplay = `<div class="age-badge">🎂 Né(e) en ${birthInfo.fullDate} (${birthInfo.age} ans)</div>`;
-                            }
-                            this.ageInfo.innerHTML = birthDisplay;
-                        } else {
-                            this.ageInfo.innerHTML = '';
-                        }
-                        break;
-                        
-                    case 'dead':
-                        this.resultIcon.textContent = '💀';
-                        this.resultTitle.textContent = 'Décédé(e)';
-                        this.resultDetails.textContent = `${data.title} semble être décédé(e).`;
-                        
-                        const fullText = data.extract + ' ' + data.infoboxContent;
-                        const birthInfoDead = this.extractBirthInfo(fullText);
-                        const deathInfo = this.extractDeathInfo(fullText);
-                        
-                        let dateDisplay = '';
-                        
-                        if (birthInfoDead) {
-                            if (birthInfoDead.hasFullDate) {
-                                dateDisplay += `<div class="age-badge">🎂 ${birthInfoDead.fullDate}</div>`;
-                            } else {
-                                dateDisplay += `<div class="age-badge">🎂 Né(e) en ${birthInfoDead.fullDate}</div>`;
-                            }
-                        }
-                        
-                        if (deathInfo) {
-                            if (deathInfo.hasFullDate) {
-                                dateDisplay += `<div class="age-badge">⚰️ ${deathInfo.fullDate}</div>`;
-                            } else {
-                                dateDisplay += `<div class="age-badge">⚰️ Décédé(e) en ${deathInfo.fullDate}</div>`;
-                            }
-                        }
-                        
-                        this.ageInfo.innerHTML = dateDisplay;
-                        break;
-                }
-                
-                this.wikipediaLink.href = data.url;
-                this.wikipediaLink.style.display = 'inline-block';
-                
-                // Scroll vers le résultat
-                this.result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            displayError(message) {
-                this.result.className = 'result error';
-                this.result.style.display = 'block';
-                this.resultIcon.textContent = '❌';
-                this.resultTitle.textContent = 'Erreur';
-                this.resultDetails.textContent = message;
-                this.ageInfo.innerHTML = '';
-                this.wikipediaLink.style.display = 'none';
-                this.resultImage.style.display = 'none';
-                this.noImage.style.display = 'flex';
-            }
-
-            showLoading() {
-                this.loading.style.display = 'block';
-                this.result.style.display = 'none';
-                this.searchBtn.disabled = true;
-            }
-
-            hideLoading() {
-                this.loading.style.display = 'none';
-                this.searchBtn.disabled = false;
+            } catch (error) {
+                console.error('❌ Erreur:', error);
+                showError(error.message);
+            } finally {
+                hideLoading();
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new LifeChecker();
+        function analyzeStatus(text) {
+            const lowerText = text.toLowerCase();
+            console.log('🔍 Analyse du statut pour le texte:');
+            console.log('📝 Début du texte:', text.substring(0, 300));
+
+            // 1. Patterns de dates absolus (RENFORCÉS)
+            // Format (1926-1962) ou (1926 - 1962) ou même (1926–1962)
+            const deathPattern1 = text.match(/\(\s*(\d{4})\s*[-–—]\s*(\d{4})\s*\)/);
+            if (deathPattern1) {
+                console.log('💀 MORT CONFIRMÉ - Pattern trouvé:', deathPattern1[0]);
+                return 'dead';
+            }
+
+            // Format (1926-) indique vivant
+            const alivePattern = text.match(/\(\s*(\d{4})\s*[-–—]\s*\)/);
+            if (alivePattern) {
+                console.log('✅ VIVANT CONFIRMÉ - Pattern trouvé:', alivePattern[0]);
+                return 'alive';
+            }
+
+            // 2. Recherche de mots-clés de décès TRÈS spécifiques
+            const strongDeathWords = [
+                'est mort', 'est morte', 'died in', 'died on', 'died at',
+                'décédé en', 'décédée en', 'décédé le', 'décédée le',
+                'mort en', 'morte en', 'mort le', 'morte le',
+                'death in', 'death on', 'suicide', 'murdered', 'killed'
+            ];
+
+            for (const word of strongDeathWords) {
+                if (lowerText.includes(word)) {
+                    console.log('💀 MOT DÉCÈS TROUVÉ:', word);
+                    return 'dead';
+                }
+            }
+
+            // 3. Recherche dans le titre/début pour les patterns courants
+            const firstLine = text.split('\n')[0] || '';
+            const firstLineLower = firstLine.toLowerCase();
+            
+            console.log('🔍 Première ligne analysée:', firstLine);
+
+            // Marilyn Monroe (1926-1962) était une actrice...
+            if (firstLineLower.includes('était un') || firstLineLower.includes('était une')) {
+                // Vérifier si c'est lié à un décès ou juste à une fonction passée
+                if (firstLineLower.includes('actrice') || firstLineLower.includes('actress') || 
+                    firstLineLower.includes('physicien') || firstLineLower.includes('physicist') ||
+                    !firstLineLower.includes('président') && !firstLineLower.includes('minister')) {
+                    console.log('💀 "ÉTAIT UN/UNE" détecté (non politique) → MORT');
+                    return 'dead';
+                }
+            }
+
+            // 4. Recherche de mots-clés de vie
+            const strongLifeWords = [
+                'est un', 'est une', 'is a', 'is an', 'is the',
+                'président de', 'minister of', 'currently', 'actuellement'
+            ];
+
+            for (const word of strongLifeWords) {
+                if (lowerText.includes(word)) {
+                    console.log('✅ MOT VIE TROUVÉ:', word);
+                    return 'alive';
+                }
+            }
+
+            // 5. Analyse plus fine de la première phrase
+            const firstSentence = text.split('.')[0] || '';
+            console.log('🔍 Première phrase complète:', firstSentence);
+
+            // Si la première phrase utilise le passé pour décrire la personne elle-même
+            if (firstSentence.toLowerCase().includes('fut ') || 
+                (firstSentence.toLowerCase().includes('était ') && 
+                 !firstSentence.toLowerCase().includes('élu'))) {
+                console.log('💀 VERBES PASSÉ dans première phrase → MORT');
+                return 'dead';
+            }
+
+            // 6. Vérification des années récentes (2020-2025)
+            const recentYears = ['2020', '2021', '2022', '2023', '2024', '2025'];
+            for (const year of recentYears) {
+                if (text.includes(year)) {
+                    console.log('✅ ANNÉE RÉCENTE trouvée:', year, '→ VIVANT');
+                    return 'alive';
+                }
+            }
+
+            // 7. Dernière chance: compter présent vs passé
+            const presentVerbs = (lowerText.match(/\b(est|are|is|continue|works|lives)\b/g) || []).length;
+            const pastVerbs = (lowerText.match(/\b(fut|était|was|died|passed away)\b/g) || []).length;
+
+            console.log('📊 Comptage final - Présent:', presentVerbs, 'Passé:', pastVerbs);
+
+            if (pastVerbs > presentVerbs) {
+                console.log('💀 MAJORITÉ PASSÉ → MORT');
+                return 'dead';
+            }
+
+            // Par défaut: vivant (mais cela ne devrait pas arriver pour Marilyn Monroe)
+            console.log('🤷 PAR DÉFAUT → VIVANT');
+            return 'alive';
+        }
+
+        function extractBirthInfo(text) {
+            console.log('🎂 Extraction info naissance du texte:', text.substring(0, 200));
+            
+            // Pattern 1: Format (1985-) pour vivant
+            const alivePattern = text.match(/\((\d{4})\s*[-–—]\s*\)/);
+            if (alivePattern) {
+                const year = parseInt(alivePattern[1]);
+                const age = new Date().getFullYear() - year;
+                console.log('✅ Pattern vivant trouvé:', year, 'âge:', age);
+                return { year, age };
+            }
+            
+            // Pattern 2: Format (1926-1962) pour décédé
+            const deadPattern = text.match(/\((\d{4})\s*[-–—]\s*(\d{4})\)/);
+            if (deadPattern) {
+                const year = parseInt(deadPattern[1]);
+                const age = new Date().getFullYear() - year;
+                console.log('✅ Pattern décédé trouvé:', year, 'âge calculé:', age);
+                return { year, age };
+            }
+
+            // Pattern 3: "né en" ou "née en"
+            const bornMatch = text.match(/né(?:e)?\s+(?:le\s+\d+\s+\w+\s+)?(\d{4})/i);
+            if (bornMatch) {
+                const year = parseInt(bornMatch[1]);
+                const age = new Date().getFullYear() - year;
+                console.log('✅ Pattern "né en" trouvé:', year, 'âge:', age);
+                return { year, age };
+            }
+
+            // Pattern 4: Format date complète dans parenthèses
+            const fullDatePattern = text.match(/\(.*?(\d{4}).*?\)/);
+            if (fullDatePattern) {
+                const year = parseInt(fullDatePattern[1]);
+                // Vérifier que c'est une année de naissance plausible (entre 1900 et 2020)
+                if (year >= 1900 && year <= 2020) {
+                    const age = new Date().getFullYear() - year;
+                    console.log('✅ Pattern date complète trouvé:', year, 'âge:', age);
+                    return { year, age };
+                }
+            }
+
+            console.log('❌ Aucune info de naissance trouvée');
+            return null;
+        }
+
+        function extractDeathInfo(text) {
+            // Pattern dates de décès
+            const deathMatch = text.match(/\(\d{4}\s*[-–]\s*(\d{4})\)/);
+            if (deathMatch) {
+                return { year: parseInt(deathMatch[1]) };
+            }
+
+            const diedMatch = text.match(/mort\s+en\s+(\d{4})/i);
+            if (diedMatch) {
+                return { year: parseInt(diedMatch[1]) };
+            }
+
+            return null;
+        }
+
+        function displayResult(data) {
+            console.log('📋 Affichage des résultats');
+
+            // Éléments
+            const result = document.getElementById('result');
+            const personImage = document.getElementById('personImage');
+            const noImage = document.getElementById('noImage');
+            const personTitle = document.getElementById('personTitle');
+            const statusText = document.getElementById('statusText');
+            const badges = document.getElementById('badges');
+            const wikiLink = document.getElementById('wikiLink');
+
+            // Image
+            if (data.imageSrc) {
+                personImage.src = data.imageSrc;
+                personImage.style.display = 'block';
+                noImage.style.display = 'none';
+            } else {
+                personImage.style.display = 'none';
+                noImage.style.display = 'flex';
+            }
+
+            // Titre et statut
+            personTitle.textContent = data.title;
+            
+            if (data.status === 'alive') {
+                result.className = 'result alive';
+                // Afficher l'âge dans le statut si la personne est vivante
+                if (data.birthInfo) {
+                    statusText.textContent = `✅ Vivant(e) - ${data.birthInfo.age} ans`;
+                } else {
+                    statusText.textContent = '✅ Vivant(e)';
+                }
+            } else {
+                result.className = 'result dead';
+                statusText.textContent = '💀 Décédé(e)';
+            }
+
+            // Badges
+            let badgeHTML = '';
+            
+            if (data.birthInfo) {
+                if (data.status === 'alive') {
+                    badgeHTML += `<span class="badge">🎂 Né(e) en ${data.birthInfo.year} (${data.birthInfo.age} ans)</span>`;
+                } else {
+                    badgeHTML += `<span class="badge">🎂 Né(e) en ${data.birthInfo.year}</span>`;
+                }
+            }
+
+            if (data.deathInfo) {
+                badgeHTML += `<span class="badge">⚰️ Décédé(e) en ${data.deathInfo.year}</span>`;
+                // Calculer l'âge au décès si on a les deux dates
+                if (data.birthInfo) {
+                    const ageAtDeath = data.deathInfo.year - data.birthInfo.year;
+                    badgeHTML += `<span class="badge">⌛ ${ageAtDeath} ans au décès</span>`;
+                }
+            }
+
+            badges.innerHTML = badgeHTML;
+
+            // Lien Wikipedia
+            wikiLink.href = data.url;
+
+            // Afficher
+            result.style.display = 'block';
+
+            console.log('✅ Affichage terminé');
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function showError(message) {
+            const result = document.getElementById('result');
+            result.className = 'result dead';
+            result.innerHTML = `<div style="text-align: center;"><h2>❌ Erreur</h2><p>${message}</p></div>`;
+            result.style.display = 'block';
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            setupAutocomplete();
+            
+            // Recherche avec Entrée
+            document.getElementById('personName').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && currentFocus === -1) {
+                    search();
+                }
+            });
         });
     </script>
 </body>
